@@ -1,0 +1,13 @@
+.staffInfo {
+  color: red;
+}
+.staffInfo .navbar {
+  background-color: #fb7299;
+  color: wheat;
+  opacity: 0.9;
+}
+.staffInfo .btn {
+  background-color: #fb7299;
+  color: wheat;
+  opacity: 0.9;
+}

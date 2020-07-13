@@ -1,0 +1,16 @@
+.ListItem {
+  display: flex;
+  justify-content: space-around;
+}
+.ListItem span {
+  flex: 1;
+}
+.btn-login {
+  background-color: #87ceeb;
+  color: white;
+}
+.btn-toregister {
+  margin-top: 6px;
+  background-color: skyblue;
+  color: white;
+}

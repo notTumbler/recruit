@@ -1,0 +1,22 @@
+.ListItem {
+  display: flex;
+  justify-content: space-around;
+}
+.ListItem span {
+  flex: 1;
+}
+.ListItem .radio {
+  flex: 2;
+}
+.ListItem .radio .radio-item {
+  margin-left: 10px;
+}
+.btn-register {
+  background-color: #87ceeb;
+  color: white;
+}
+.btn-account {
+  margin-top: 6px;
+  background-color: #87ceeb;
+  color: white;
+}

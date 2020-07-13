@@ -1,0 +1,14 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  background-color: #fb7299;
+  color: wheat;
+  opacity: 0.9;
+}
+.btn {
+  background-color: #fb7299;
+  color: wheat;
+  opacity: 0.9;
+}

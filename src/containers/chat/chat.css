@@ -1,0 +1,37 @@
+/*
+  消息文本居右
+*/
+html {
+  height: 100%;
+}
+#chat-page {
+  position: relative;
+}
+#chat-page .chat-me .am-list-extra {
+  flex-basis: auto;
+  margin-bottom: 10px;
+}
+.chat-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.chat-List {
+  margin-top: 45px;
+  margin-bottom: 46px;
+}
+.inputItem {
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+  z-index: 9999;
+  border: 1px solid skyblue;
+}
+#chat-page .chat-me .am-list-extra {
+  padding-right: 15px;
+  text-align: right;
+}
+.center {
+  margin: 0;
+}
