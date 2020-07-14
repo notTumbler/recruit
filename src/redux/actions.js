@@ -132,12 +132,13 @@ export const login = (user) => {
   return async dispatch => {
     const response = await reqLogin(user);
     const result = response.data;
-    console.log( result);
+    console.log(result);
     if(result.code === 200){
       //登录成功，可以获得消息列表
       getMsgList(dispatch,result.data._id);
       dispatch(authSuccess(result.data));
-    }else{
+    }
+    if(result.code === 400){
       dispatch(errorMsg(result.msg));
     }
   }

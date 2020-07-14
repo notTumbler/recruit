@@ -12,11 +12,11 @@ import { Redirect } from 'react-router-dom'
 import { login } from '../../redux/actions'
 
 import Logo from '../../components/logo/logo'
-
+import Toast from '../../components/toast/toast'
 
 class Login extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.handleChange = this.handleChange.bind(this);
     this.tologin = this.tologin.bind(this);
     this.state = {
@@ -62,7 +62,6 @@ class Login extends React.Component {
     return (<div>
       <NavBar className='navbar'>招&nbsp;&nbsp;聘</NavBar>
       <Logo className='Logo'></Logo>
-    {msg ? <div>{msg}</div>:null}
       <WingBlank>
         <List>
           <InputItem
@@ -79,7 +78,7 @@ class Login extends React.Component {
           <Button className="btn-toregister" onClick={()=>this.toregister()}>还没有账号,去注册</Button>
         </List>
       </WingBlank>
-    
+      {msg?<Toast toastData={msg} showTime={1200}/>:null}
     </div>)
   }
 }

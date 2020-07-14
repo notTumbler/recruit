@@ -1,6 +1,7 @@
 import React from 'react'
 import './register.less'
 import Logo from '../../components/logo/logo'
+import Toast from '../../components/toast/toast'
 import {
   NavBar, WingBlank, List,
   InputItem, WhiteSpace, Radio, Button
@@ -61,7 +62,6 @@ class Register extends React.Component {
     return (<div>
       <NavBar>招&nbsp;&nbsp;聘</NavBar>
       <Logo className='Logo'></Logo>
-      <span>{msg}</span>
       <WingBlank>
         <List>
           <InputItem onChange={(val)=>this.handleChange('username',val)}>用户名:</InputItem>
@@ -94,6 +94,7 @@ class Register extends React.Component {
           <Button className="btn-account" onClick={()=>this.toLogin()}>已有账号</Button>
         </List>
       </WingBlank>
+      {msg?<Toast toastData={msg} showTime={1000} />:null}
     </div>)
   }
 }

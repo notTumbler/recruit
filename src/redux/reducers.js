@@ -25,7 +25,7 @@ function user(state = initUser, action) {
       const { type, header } = action.data;
       return { ...action.data, redirectTo: getRedirectTo(type, header) };
     case ERROR_MSG:
-      return {msg:action.data, redirectTo: '/' };
+      return {...state,msg:action.data};
     case RECEIVE_USER:
       return action.data;
     case RESET_USER:

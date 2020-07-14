@@ -100,3 +100,9 @@ aria-label属性可以用在任何典型的HTML元素中，并不需要配合特
 **(经过测试，直接用forEach之后用不用map效果都一样,可能有bug,但没发现)**
 ##### 当退出当前聊天界面时,未读提示消失有延迟
 ###### 引入了第三方动画库 Ant-Motion  npm install -S rc-queue-anim
+
+
+*7.14*
+##### 为什么将reducer里errorMsg中的redirectTo去掉就不报频繁修改state的错误了？？
+
+##### 添加了Toast功能
