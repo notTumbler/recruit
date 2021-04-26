@@ -41,7 +41,7 @@ class Staff extends React.Component{
     }
 
     return (<div>
-      <NavBar className='navbar'>Staff&nbsp;信息完善</NavBar>
+      <NavBar  className='navbar'>Staff&nbsp;信息完善</NavBar>
       <HeaderSelect setHeader={this.setHeader}></HeaderSelect>
       <InputItem placeholder="请输入应聘职位" onChange={(val)=> this.handleChange('post',val)}>应聘职位:</InputItem>
       <TextareaItem title="个人简介:" rows={3} onChange={(val)=> this.handleChange('info',val)}></TextareaItem>

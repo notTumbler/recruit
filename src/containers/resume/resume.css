@@ -1,0 +1,13 @@
+.twoBtn {
+  margin-top: 31px;
+  display: flex;
+}
+.twoBtn .firstBtn,
+.twoBtn .secondBtn {
+  background: #108ee9;
+  flex: 1;
+  height: 46px;
+  outline: none;
+  border: none;
+  color: wheat;
+}

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import './toast.less'
 
@@ -15,7 +15,7 @@ export default class Toast extends React.Component {
 
   componentDidMount() {
     const { showTime } = this.props;
-    console.log(typeof(showTime));
+    // console.log(typeof(showTime));
     this.showOrHide(showTime);
   }
   showOrHide = (showTime) => {
@@ -28,11 +28,13 @@ export default class Toast extends React.Component {
 
   render() {
     const { toastData } = this.props;
-    return (<Fragment>
+    return (
+    <React.Fragment>
       {
         this.state.isShow ? <div className='toast' >{toastData}</div> : null
       }
-    </Fragment>)
+    </React.Fragment>
+    )
   }
 }
 

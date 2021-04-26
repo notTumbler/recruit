@@ -13,13 +13,10 @@ import { register } from '../../redux/actions'
 
 import { Redirect } from 'react-router-dom'
 
+// import BackGround from '../../components/background/background'
+
 const ListItem = List.Item;
 class Register extends React.Component {
-
-  // constructor(props){
-  //   super(props)
-  // }
-
   state = {
     username:'',
     password:'',
@@ -52,7 +49,6 @@ class Register extends React.Component {
 
 
   render() {
-
     const {type} = this.state;
     const {msg, redirectTo} = this.props.user;
     if(redirectTo){
@@ -60,7 +56,7 @@ class Register extends React.Component {
     }
 
     return (<div>
-      <NavBar>招&nbsp;&nbsp;聘</NavBar>
+      <NavBar>注&nbsp;册&nbsp;页&nbsp;面</NavBar>
       <Logo className='Logo'></Logo>
       <WingBlank>
         <List>
@@ -80,7 +76,7 @@ class Register extends React.Component {
               <div className='radio'>
                 <Radio className='radio-item' checked={type==='dashen'}
                   onChange={()=>this.handleChange('type','dashen')}
-                >大神</Radio>
+                >求职</Radio>
                 <Radio className='radio-item' checked={type === 'laoban'}
                   onChange={()=>this.handleChange('type','laoban')}
                 >老板</Radio>
@@ -98,7 +94,6 @@ class Register extends React.Component {
     </div>)
   }
 }
-
 export default connect(
   state => ({user:state.user}),
   {register}

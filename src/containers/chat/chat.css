@@ -24,7 +24,8 @@ html {
 .inputItem {
   position: fixed;
   bottom: 0;
-  width: 99%;
+  right: 0;
+  width: 100%;
   z-index: 9999;
   border: 1px solid skyblue;
 }
@@ -34,4 +35,8 @@ html {
 }
 .center {
   margin: 0;
+}
+.am-popover {
+  position: absolute;
+  z-index: 99999;
 }

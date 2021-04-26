@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
 import {
-  WingBlank, WhiteSpace, Card,
+  WingBlank, WhiteSpace, Card
 } from 'antd-mobile'
 import './user-list.less'
 
@@ -30,12 +30,14 @@ class UserList extends React.Component {
         userList.map(listItem => (
           <div key={listItem._id}>
             <WingBlank>
-              <Card onClick={()=>this.props.history.push(`/chat/${listItem._id}`)}>
-                <Header thumb={require(`../../assets/img/${listItem.header}.png`)}
+              <Card 
+                style={{width:'100%'}}
+              onClick={()=>this.props.history.push(`/chat/${listItem._id}`)}>
+                <Header thumb={require(`../../assets/img/${listItem.header}.png`) || null}
                   extra={listItem.username}></Header>
                 <WhiteSpace />
                 <Body>
-                  {listItem._id}
+                  {/* {listItem._id} */}
                   <div>职位:{listItem.post}</div>
                   <WhiteSpace />
                   {listItem.company?<div>公司:{listItem.company}</div>:null}

@@ -1,10 +1,17 @@
 .userList {
-  margin-top: 46px;
+  margin-top: 48px;
   padding-bottom: 45px;
   height: calc(667 - 95) px;
+  position: relative;
 }
 .userList .am-card-body {
   color: grey;
+}
+.userList .am-card-body .specialBtn,
+.userList .am-card-body .am-button-inline {
+  position: absolute;
+  top: 55%;
+  right: 4%;
 }
 .userList img {
   width: 55px;

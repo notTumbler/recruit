@@ -120,6 +120,7 @@ export const register = (user) => {
   }
 };
 
+
 // 登录action
 export const login = (user) => {
   const { username,password } = user;

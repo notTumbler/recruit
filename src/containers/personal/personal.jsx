@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Cookies from 'js-cookie'
 
-import { Result, List, WhiteSpace, Button,Modal } from 'antd-mobile'
+import { Result, List, WhiteSpace, Button,Modal,Icon } from 'antd-mobile'
 import './personal.less'
 
 import { resetUser } from '../../redux/actions'
@@ -41,16 +41,35 @@ class Personal extends React.Component {
         message={company}
       />
 
-      <List renderHeader={() => '相关信息'}>
+      <List renderHeader={() => '相关要求'}>
         <Item multipleLine>
-          <Brief>职位:{post}</Brief>
-          {type==='laoban'?<Brief>职位要求:{info}</Brief>:<Brief>个人简介:{info}</Brief>}
+          <Brief>意向职位:&nbsp;&nbsp;&nbsp;{post}</Brief>
+          {type==='laoban'?<Brief>职位要求:{info}</Brief>:<Brief>个人简介:&nbsp;&nbsp;&nbsp;{info}</Brief>}
           {salary?<Brief>薪资:{salary}</Brief>:null}
         </Item>
       </List>
       <WhiteSpace />
       <List>
-        <Button type="warning"
+        <Item multipleLine >
+          <div className="item" onClick={
+            () => this.props.history.push(`/resume`)
+          }>
+            我的简历
+            <Icon type='right'size='md'/>
+          </div>
+        </Item>
+        <Item multipleLine >
+          <div className="item" onClick={
+            () => this.props.history.push(`/updatePsw`)
+          }>
+            修改密码
+            <Icon type='right'size='md'/>
+          </div>
+        </Item>
+      </List>
+      <WhiteSpace />
+      <List>
+        <Button type="primary"
           onClick={()=>this.logout()}
         >退出登录</Button>
       </List>

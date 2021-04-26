@@ -18,6 +18,8 @@ import Message from '../message/message'
 import Personal from '../personal/personal'
 import Nofound from '../../components/not-found/no-found'
 import Chat from '../../containers/chat/chat'
+import Resume from '../resume/resume'
+import UpdatePsw from '../updatePsw/index'
 
 import NavFooter from '../../components/footer/footer'
 
@@ -44,7 +46,7 @@ class Main extends React.Component {
       component: Boss,
       title: 'Staff列表',
       icon: 'staff',
-      text: '大神'
+      text: '求职'
     }, {
       path: '/staff',
       component: Staff,
@@ -72,7 +74,7 @@ class Main extends React.Component {
 
     const {user} = this.props;
     if(user.msg === '用户名或密码错误'){
-      console.log('das');
+      console.log('main.jsx -- 75');
       return <Redirect to='/login' />
     }
 
@@ -85,8 +87,8 @@ class Main extends React.Component {
     if (!userid) {
       return <Redirect to='/login' />
     }
-    //如果有，读取redux中的user状态
     const {unReadCount } = this.props;
+    //如果有，读取redux中的user状态
     //如果user没有_id,返回null(不做任何显示)
     if (!user._id) {
       return null;
@@ -97,7 +99,7 @@ class Main extends React.Component {
       if (path === '/') {
         //得到了重定向的路径
         path = getRedirectTo(user.type, user.header);
-        console.log(path);
+        // console.log(path);
         return <Redirect to={path} />
       }
     }
@@ -139,6 +141,8 @@ class Main extends React.Component {
           <Route path='/bossinfo' component={BossInfo} />
           <Route path='/staffinfo' component={StaffInfo} />
           <Route path='/chat/:userid' component={Chat}/>
+          <Route path='/resume' component={Resume} />
+          <Route path='/updatepsw' component={UpdatePsw} />
           <Route path='/nofound' component={Nofound} />
         </Switch>
       </div>

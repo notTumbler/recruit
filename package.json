@@ -21,10 +21,10 @@
     "socket.io": "^2.3.0"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "set PORT=8889 && react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

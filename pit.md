@@ -105,4 +105,31 @@ aria-label属性可以用在任何典型的HTML元素中，并不需要配合特
 *7.14*
 ##### 为什么将reducer里errorMsg中的redirectTo去掉就不报频繁修改state的错误了？？
 
-##### 添加了Toast功能
+##### 添加了Toast功能 
+**<></>是<React.Fragment></React.Fragment>的语法糖,Fragments可传入key值（循环的时候需要）**
+
+**7.15**
+##### react-creat-app怎么配置webpack-dev-server相关项？
+一、npm run eject 出现webpack.config.js **但是此过程不可逆，而且会无法升级react-scripts包**
+二、下载react-app-rewired（react社区内专门用来自定义配置RCA的工具）
+1、把react-scripts start 改成 react-app-rewired start
+2、2.x以上使用customize-cra包，再在根目录下创建config-overrides.js文件，导入如下代码：
+const {
+    override,
+    fixBabelImports,
+    addLessLoader,
+    overrideDevServer
+} = require('customize-cra');
+**这里必须用两个箭头函数**
+**disableHostCheck和proxy同一级（不是prox下的）**
+const serverConfig = ()=> (configFunction) =>{
+    configFunction.disableHostCheck=true
+    return configFunction
+}
+
+module.exports = {
+  webpack:{...},
+  devServer:overrideDevServer(
+    serverConfig()
+  )
+}

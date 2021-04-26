@@ -2,10 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { sendMsg,readMsg } from '../../redux/actions'
 
+
+// import Toast from '../../components/toast/toast'
+
 //第三方动画库
 import QueueAnim from 'rc-queue-anim'
 import {
-  NavBar, List, InputItem, Grid, Icon
+  NavBar, List, InputItem, Grid, Icon,Popover,
+  Toast,
 } from 'antd-mobile' 
 import './chat.less'
 
@@ -16,8 +20,12 @@ class Chat extends React.Component {
   state = {
     content: '',
     //是否显示表情列表
-    isShow: false
+    isShow: false,
+    visible:false,
+    toastData:'投递成功',
+    isShowToast:false
   }
+  pastCount = 0
   //准备好表情的数据
   componentWillMount() {
     const emojis = [
@@ -44,6 +52,7 @@ class Chat extends React.Component {
     const to = this.props.user._id;
     // console.log(from,to);
     this.props.readMsg(from,to);
+    //
   }
   //发送消息，直达底部
   componentDidUpdate(){
@@ -62,8 +71,6 @@ class Chat extends React.Component {
       }, 0)
     }
   }
-
-
   handleSend = () => {
     //收集数据
     const from = this.props.user._id;
@@ -80,12 +87,22 @@ class Chat extends React.Component {
       isShow: false
     })
   }
-
+  //投递简历按钮
+  pastResume = () => {
+    this.setState({
+      visible:false,
+      isShowToast:true
+    })
+    if(this.pastCount > 0) {
+      Toast.success('已投递,请勿重复投递')
+    }else{
+      Toast.success('投递成功', 2);
+    }
+    this.pastCount ++ 
+  }
   render() {
-
     const { user } = this.props;
     const { users, chatMsgs } = this.props.chat;
-
     //计算当前聊天的chat_id
     const meId = user._id;
     //如果还没有获取到数据，直接不做任何显示
@@ -100,12 +117,45 @@ class Chat extends React.Component {
     const targetHeader = users[targetId].header;
     const targetIcon = targetHeader ? require(`../../assets/img/${targetHeader}.png`) : null;
 
-
     return (<>
       <div id="chat-page">
         <NavBar icon={<Icon type='left' />}
           className="chat-nav"
           onLeftClick={() => this.props.history.goBack()}
+          rightContent={
+            <Popover 
+            mask
+            overlayClassName="fortest"
+            overlayStyle={{ color: 'currentColor' }}
+            visible={false}
+            overlay={[
+              (<Item key="4" value="scan" 
+              onClick={()=>this.pastResume()}
+              >投递简历</Item>),
+              (<Item key="5" value="scan" 
+              onClick={()=>this.setState({
+                visible:false
+              })}
+              >举报</Item>)
+            ]}
+            align={{
+              offset: [-5, -10],
+            }}
+            onVisibleChange={this.handleVisibleChange}
+            onSelect={this.onSelect}
+          >
+            <div style={{
+              height: '100%',
+              padding: '0 15px',
+              marginRight: '-15px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+            >
+              <Icon type="ellipsis" />
+            </div>
+          </Popover>
+          }
         >
           {users[targetId].username}
         </NavBar>

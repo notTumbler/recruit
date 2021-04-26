@@ -1,3 +1,9 @@
 .personal {
   margin-top: 50px;
 }
+.personal .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #999;
+}
