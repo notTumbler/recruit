@@ -1,0 +1,38 @@
+.recommend {
+  background-color: #fff;
+  position: fixed;
+  top: 45px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.recommend .recommend-head {
+  color: black;
+  background-color: whitesmoke;
+  padding: 10px 10px 10px 20px;
+  font-size: 16px;
+  font-weight: 200;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.recommend .recommend-head .head-item {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 4px 10px;
+  height: 24px;
+}
+.recommend .recommend-shuffling {
+  border-bottom: solid 2px orange;
+}
+.recommend .user-list-wrap {
+  height: calc(100% - 300px);
+  overflow-y: auto;
+  margin-bottom: 50px;
+}
+.recommend .user-list-wrap .userList {
+  margin-top: 0;
+}

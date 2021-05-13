@@ -26,8 +26,14 @@ export default  class HeaderSelect extends React.Component{
         icon: require(`../../assets/img/avatar${i+1}.png`)
       })
     }
-    console.log(this.headerList);
-    
+    // console.log(this.headerList);
+  }
+  componentDidMount(){
+    const {headerIcon} = this.props
+    if(headerIcon){
+      let newIcon = require(`../../assets/img/${headerIcon}.png`)
+      this.setState({icon:newIcon})
+   }
   }
 
   handleClick = ({text,icon}) => {
@@ -40,7 +46,9 @@ export default  class HeaderSelect extends React.Component{
   }
 
   render(){
-    const {icon} = this.state;
+    let {icon} = this.state;
+    //用户更新，获取当前头像
+    //用户注册，则跳过
     const listHeader = !icon ? <div>
       请选择头像:
       <img src={wu} alt='' 
@@ -70,7 +78,7 @@ export default  class HeaderSelect extends React.Component{
       </div>
     );
     
-  return(<div>
+  return(<div className='header-select'>
     <List renderHeader={()=>listHeader}>
       <Grid data={this.headerList} columnNum={5}
         onClick = {this.handleClick}

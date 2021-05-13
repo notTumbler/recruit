@@ -9,7 +9,8 @@ import { combineReducers } from 'redux'
 import {
   AUTH_SUCCESS, ERROR_MSG,
   RECEIVE_USER, RESET_USER, RECEIVE_USER_LIST,
-  RECEIVE_MSG_LIST, RECEIVE_MSG,MSG_READ
+  RECEIVE_MSG_LIST, RECEIVE_MSG,MSG_READ,
+  UPDATE_PSW,GET_RESUME,PAST_RESUME
 } from './action-types';
 
 import { getRedirectTo } from '../utils/getRedirectTo'
@@ -30,6 +31,8 @@ function user(state = initUser, action) {
       return action.data;
     case RESET_USER:
       return { msg: action.data };
+    case UPDATE_PSW:
+      return { ...state,password:action.data}
     default: return state;
   }
 }
@@ -93,9 +96,34 @@ function chat(state = initChat, action) {
   }
 }
 
+//简历部分
+const initResume = {
+  userId:'',
+  name:'',
+  workWill:'',
+  jiaoYu:'',
+  shiXi:'',
+  skills:'' 
+}
+function resume(state = initResume,action){
+  switch(action.type){
+    case GET_RESUME:
+      return {
+        ...state,...action.data
+      }
+    case PAST_RESUME:
+      return{
+        ...state,...action.data
+      }
+    default:
+      return state
+  }
+}
+
 
 export default combineReducers({
   user,   //{}
   userList,  //[]
-  chat  //{}
+  chat,  //{}
+  resume //{}
 }) 

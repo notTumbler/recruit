@@ -3,7 +3,7 @@ import React from 'react'
 import './login.less'
 import {
   NavBar, WingBlank, List,
-  InputItem, WhiteSpace, Button
+  InputItem, WhiteSpace, Button,Toast
 } from 'antd-mobile'
 
 //redux
@@ -11,8 +11,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { login } from '../../redux/actions'
 
-import Logo from '../../components/logo/logo'
-import Toast from '../../components/toast/toast'
+// import Logo from '../../components/logo/logo'
+import MyToast from '../../components/toast/toast'
 // import BackGround from '../../components/background/background'
 
 class Login extends React.Component {
@@ -28,7 +28,6 @@ class Login extends React.Component {
   }
   timer:null
   componentDidMount() {
-     
      this.timer = setTimeout(() => {
       this.setState({
         NoshowAnimation: true
@@ -38,9 +37,9 @@ class Login extends React.Component {
   //点击登录 获取表单里的信息
   tologin = () => {
     const { username, password } = this.state;
-    console.log(username, password);
+    // console.log(username, password);
     if (username.trim() === '' || password.trim() === '') {
-      console.log('用户名密码不能为空');
+      Toast.info('用户名或密码不能为空');
       return;
     } else {
       // console.log(this.state);
@@ -73,7 +72,7 @@ class Login extends React.Component {
           (this.state.NoshowAnimation) ?
             <div>
               <NavBar id='navbar'>Login</NavBar>
-              <Logo className='Logo'></Logo>
+              {/* <Logo className='Logo'></Logo> */}
               <WingBlank>
                 <List>
                   <InputItem
@@ -90,8 +89,7 @@ class Login extends React.Component {
                   <Button className="btn-toregister" onClick={() => this.toregister()}>还没有账号,去注册</Button>
                 </List>
               </WingBlank>
-              {msg ? <Toast toastData={'msg'} showTime={1200} /> : null}
-              {/* <Toast toastData={'chen'} showTime={3000}></Toast> */}
+              {msg ? <MyToast toastData={msg} showTime={1200} /> : null}
             </div>
             : (<div id='zairu'>
                 <div className="circleProgress-wrapper"
@@ -131,7 +129,6 @@ class Login extends React.Component {
     )
   }
 }
-
 export default connect(
   state => ({ user: state.user }),
   { login }

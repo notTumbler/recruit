@@ -1,0 +1,28 @@
+.resume-wrap {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.resume-wrap .card-body .resume-public {
+  margin-top: 10px;
+  border-bottom: 2px #ccc solid;
+  width: 100%;
+  line-height: 40px;
+}
+.resume-wrap .card-body .shi-xi,
+.resume-wrap .card-body .skills {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.resume-wrap .card-body .shi-xi b,
+.resume-wrap .card-body .skills b {
+  width: 25%;
+}
+.resume-wrap .card-body .shi-xi textarea,
+.resume-wrap .card-body .skills textarea {
+  outline: none;
+  border: none;
+  flex: 1;
+}

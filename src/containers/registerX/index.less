@@ -1,0 +1,96 @@
+
+.ListItem{
+  display: flex;
+  justify-content: space-around;
+  span{
+    flex: 1;
+  }
+  .radio{
+    flex: 2;
+    .radio-item{
+      margin-left: 10px;
+    }
+  }
+}
+// .btn-register{
+//   background-color: #87ceeb;
+//   color:white;
+// }
+// .btn-account{
+//   margin-top: 6px;
+//   background-color: #87ceeb;
+//   color:white;
+// }
+
+.register-wrap{
+  display: inline-block;
+  width: 100%;
+  height: 667px;
+  background-image: url('../loginX/backTwo.jpeg');
+  // background-image: url('../../assets/one/backtwo.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  .register-dialog-header{
+    width: 40%;
+    font-size: 36px;
+    margin-bottom: 10px;
+    padding: 10px 4px 4px;
+    margin-left: 20px;
+    color: green;
+    font-weight: 600;
+    border-bottom: rgba(2, 37, 41,.5) 4px solid;
+  }
+  .register-dialog{
+    opacity: .8;
+    width: 80%;
+    height: 70%;
+    background: rgba(255, 255, 255, .2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(30px);
+    .resetInput{
+      width: 80%;
+      height: 40px;
+      margin-top: 10px;
+      border-radius: 25px;
+      text-indent: 20px;
+    }
+    .username,
+    .passward{
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px;
+      margin: 10px 0;
+    }
+    .chen{
+      border-radius: 14px;
+      width: 80%;
+      margin-left: -60px;
+    }
+    .sure-password{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 5px;
+      margin: 10px 0;
+      text-indent: 4px;
+    }
+    
+    .btn-register,
+    .btn-account{
+      display: block;
+      border: none;
+      height: 40px;
+      width: 50%;
+      margin-top: 10px;
+      // border-radius: 20px;
+      margin:  10px auto;
+      position: relative;
+    }
+  }
+}

@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "antd-mobile": "^2.3.3",
     "axios": "^0.19.2",
+    "blueimp-md5": "^2.18.0",
+    "core-js": "^2.6.12",
     "js-cookie": "^2.2.1",
     "prop-type": "0.0.1",
     "rc-queue-anim": "^1.8.5",

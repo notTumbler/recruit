@@ -20,3 +20,10 @@ export const RECEIVE_MSG_LIST = 'receive_msg_list'
 export const RECEIVE_MSG = 'receive_msg'
 //读取完某条消息，并将其从未读消息中移除
 export const MSG_READ = 'msg_read'
+//修改密码
+export const UPDATE_PSW = 'update_psw'
+
+//上传简历
+export const PAST_RESUME = 'past_resume'
+// 获取简历
+export const GET_RESUME = 'get_resume'

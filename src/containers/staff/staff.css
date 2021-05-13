@@ -1,0 +1,9 @@
+.staff {
+  position: relative;
+}
+.staff .search-warp {
+  position: fixed;
+  width: 100%;
+  top: 45px;
+  z-index: 99999;
+}

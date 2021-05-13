@@ -20,6 +20,7 @@ import Nofound from '../../components/not-found/no-found'
 import Chat from '../../containers/chat/chat'
 import Resume from '../resume/resume'
 import UpdatePsw from '../updatePsw/index'
+import Recommend from '../recommend/index'
 
 import NavFooter from '../../components/footer/footer'
 
@@ -44,15 +45,23 @@ class Main extends React.Component {
     {
       path: '/boss',
       component: Boss,
-      title: 'Staff列表',
+      title: '人员列表',
       icon: 'staff',
-      text: '求职'
-    }, {
+      text: '人员'
+    }, 
+    {
       path: '/staff',
       component: Staff,
-      title: 'Boss列表',
+      title: '职位列表',
       icon: 'boss',
-      text: '老板'
+      text: '职位'
+    },
+    {
+      path:'/recommend',
+      component:Recommend,
+      title:'推荐列表',
+      icon:'staff',
+      text:'推荐'
     },
     {
       path: '/message',
@@ -67,11 +76,10 @@ class Main extends React.Component {
       title: '个人中心',
       icon: 'personal',
       text: '我的'
-    },
+    }
   ]
 
   render() {
-
     const {user} = this.props;
     if(user.msg === '用户名或密码错误'){
       console.log('main.jsx -- 75');
@@ -129,7 +137,6 @@ class Main extends React.Component {
     }
     navList = navList.filter(ele => !ele.hide)
     return (<div>
-
       <div className="top">
         {Navpath ? <NavBar className='main-nav'>{Navpath.title}</NavBar> : null}
       </div>

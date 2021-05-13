@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
 import {
-  WingBlank, WhiteSpace, Card
+  WhiteSpace, Card
 } from 'antd-mobile'
 import './user-list.less'
 
@@ -12,48 +12,49 @@ const Header = Card.Header;
 const Body = Card.Body;
 
 class UserList extends React.Component {
-
   static propTypes = {
     userList: PropTypes.array.isRequired
   }
-
   render() {
-
-    const { userList } = this.props;
-
-    return (<div className='userList'>
+    let { userList } = this.props;
+    // console.log(userList)
+    //用length来判断是否渲染
+    // console.log(userList.length)
+    return ( userList.length ? 
+      <div className='userList'>
       <QueueAnim type='scale' delay={100} 
-       duration={700}
+       duration={500}
        >
-      
       {
         userList.map(listItem => (
           <div key={listItem._id}>
-            <WingBlank>
               <Card 
                 style={{width:'100%'}}
               onClick={()=>this.props.history.push(`/chat/${listItem._id}`)}>
-                <Header thumb={require(`../../assets/img/${listItem.header}.png`) || null}
+                <Header thumb={require(`../../assets/img/${listItem.header || undefined}.png`)}
                   extra={listItem.username}></Header>
                 <WhiteSpace />
                 <Body>
-                  {/* {listItem._id} */}
-                  <div>职位:{listItem.post}</div>
-                  <WhiteSpace />
-                  {listItem.company?<div>公司:{listItem.company}</div>:null}
-                  <WhiteSpace />
-                  {listItem.salary?<div>月薪:{listItem.salary}</div>:null}
-                  <WhiteSpace />
-                  <div>描述:{listItem.info}</div>
-                  <WhiteSpace />
+                  {listItem.type === 'dashen'?<div className='distance'>技术栈：{listItem.post}</div>:<div className='distance'>职位：{listItem.post}</div>}
+
+                  {listItem.company?<div className='distance'>公司：{listItem.company}</div>:null}
+                  {listItem.type==='dashen'?<div className='distance'>期望薪资：{listItem.salary||<b>该用户未填写</b>}</div>:<div className='distance'>月薪：{listItem.salary||<b>该用户未填写</b>}</div>}
+                  <div className='miaoshu'>要求 ：
+                    <textarea
+                      defaultValue={listItem.info || '该用户还未填写'}
+                      cols={32}
+                    >
+                    </textarea>
+                  </div>
                 </Body>
               </Card>
-            </WingBlank>
           </div>
         ))
       }
       </QueueAnim>
-     
+    </div>
+    : <div className='user-list-404'>
+       <img src={require('./zanwu.webp')} alt='图片也失联了'></img>
     </div>)
   }
 }

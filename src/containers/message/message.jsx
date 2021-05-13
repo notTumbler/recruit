@@ -58,13 +58,13 @@ function getLastMsgs(chatMsgs,userid) {
 class Message extends React.Component {
 
   render() {
-
     const { user } = this.props;
+    // console.log(user)
     const { users, chatMsgs } = this.props.chat;
 
     //通过chat_id来将chatMsgs分组
     let lastMsges = getLastMsgs(chatMsgs,user._id);
-    console.log(lastMsges);
+    // console.log(lastMsges);
     return (<div>
       <List className="message-List">
         <QueueAnim type='left' duration={1000}>
@@ -74,10 +74,15 @@ class Message extends React.Component {
             const targetUserId = msg.to === user._id?msg.from:msg.to;
             //得到目标用户的信息
             const targetUser = users[targetUserId];
+            if(!targetUser) {
+              console.log('targetUser is undefined')
+              return null
+            }
             return(
               <Item key={msg._id}
                 extra={<Badge text={msg.unReadCount} />}
                 thumb={targetUser.header?require(`../../assets/img/${targetUser.header}.png`):null}
+
                 arrow='horizontal'
                 onClick={()=>this.props.history.push(`/chat/${targetUserId}`)}
               >

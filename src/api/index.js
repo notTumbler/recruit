@@ -19,3 +19,12 @@ export const reqChatMsgList = () => ajax('/msglist');
 
 //修改指定消息为已读
 export const reqReadMsg = (from) => ajax('/readmsg',{from},'POST');
+
+//修改用户密码
+export const reqUpdatePsw = (newPassword) => ajax('/userpassword',{newPassword},'POST')
+
+//上传简历
+export const reqPastResume = (resumeObj) => ajax('/resume',resumeObj,'POST')
+
+// 获取简历
+export const reqGetResume = (userId) => ajax('/getresume',{userId},'POST')

@@ -33,7 +33,7 @@ class Register extends React.Component {
       return console.log('两次输入的密码不一致');
     }else{
       this.props.register(this.state);
-      console.log(this.state);
+      // console.log(this.state);
     }
   }
   //点击对应的输入框，将输入框里的值保存到state里
@@ -76,10 +76,10 @@ class Register extends React.Component {
               <div className='radio'>
                 <Radio className='radio-item' checked={type==='dashen'}
                   onChange={()=>this.handleChange('type','dashen')}
-                >求职</Radio>
+                >求职者</Radio>
                 <Radio className='radio-item' checked={type === 'laoban'}
                   onChange={()=>this.handleChange('type','laoban')}
-                >老板</Radio>
+                >招聘者</Radio>
               </div>
             </div>
           </ListItem>
