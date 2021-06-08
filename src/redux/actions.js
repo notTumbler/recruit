@@ -233,7 +233,7 @@ export const asyncGetResume = (userId) => {
   return async dispatch => {
     const response = await reqGetResume(userId)
     const result = response.data
-    console.log(`*****${JSON.stringify(result)}`)
+    // console.log(`*****${JSON.stringify(result)}`)
     if(result.code === 200){
       dispatch(getResume(result.data))
     }else{

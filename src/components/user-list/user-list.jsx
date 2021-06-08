@@ -6,7 +6,6 @@ import {
   WhiteSpace, Card
 } from 'antd-mobile'
 import './user-list.less'
-
 import QueueAnim from 'rc-queue-anim'
 const Header = Card.Header;
 const Body = Card.Body;
@@ -54,9 +53,10 @@ class UserList extends React.Component {
       </QueueAnim>
     </div>
     : <div className='user-list-404'>
+      {/* eslint-disable-next-line */}
+      <marquee scrollamount='12'>未找到相关内容,请重新输入关键字……</marquee>
        <img src={require('./zanwu.webp')} alt='图片也失联了'></img>
     </div>)
   }
 }
-
 export default withRouter(UserList)

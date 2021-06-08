@@ -61,6 +61,7 @@ class UpdatePsw extends React.Component{
       <List>
         <InputItem
           clear
+          type="password"
           placeholder="请输入旧密码"
           ref={el => this.inputRef = el}
           onChange = {(val)=>{
@@ -71,6 +72,7 @@ class UpdatePsw extends React.Component{
         <InputItem
           // {...getFieldProps('autofocus')}
           clear
+          type='password'
           placeholder="请设置新的密码"
           ref={el => this.autoFocusInst = el}
           onChange = {(val)=>{
@@ -80,6 +82,7 @@ class UpdatePsw extends React.Component{
       <WhiteSpace />
         <InputItem
           clear
+          type="password"
           placeholder="请重新输入新的密码"
           ref={el => this.autoFocusInst = el}
           onChange = {(val)=>{
@@ -89,7 +92,7 @@ class UpdatePsw extends React.Component{
       </List>
       <WhiteSpace />
       <WhiteSpace />
-      <Button type='warning'
+      <Button id='psw-btn'
         onClick={() => this.updatePsw(password)}
       >确认修改</Button>
     </div>)

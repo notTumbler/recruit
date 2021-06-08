@@ -30,11 +30,19 @@ class Login extends React.Component {
   }
   timer: null
   componentDidMount() {
-    this.timer = setTimeout(() => {
+    let isFirstEntry =  localStorage.getItem('firstEntry')
+    if(isFirstEntry) {
       this.setState({
-        NoshowAnimation: true
+        NoshowAnimation:true
       })
-    }, 4000)
+    }else{
+      this.timer = setTimeout(() => {
+        this.setState({
+          NoshowAnimation: true
+        })
+      }, 4000)
+    }
+    localStorage.removeItem('firstEntry')
     let chen = Math.random().toString(36).substring(2,6)
     this.setState({everyValidaCode:chen})
   }
@@ -72,7 +80,6 @@ class Login extends React.Component {
    */
   //修改验证码
   ImgArr = ['one','two','three','four','five','six','seven','eight','nine']
-
   resetVerificationCode = () => {
     const theCode = Math.random().toString(36).substring(2,6)
     this.setState({
@@ -138,7 +145,6 @@ class Login extends React.Component {
             : (<div id='zairu'>
               <div className="circleProgress-wrapper"
                 onClick={() => {
-                  console.log('click')
                   this.setState({
                     NoshowAnimation: true
                   })
@@ -153,7 +159,6 @@ class Login extends React.Component {
                 </div>
                 <span className="text-area">跳过</span>
               </div>
-
               <div className="font">
                 <span>Mini直聘</span>
               </div>

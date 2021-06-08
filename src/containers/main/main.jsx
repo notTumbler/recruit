@@ -89,7 +89,7 @@ class Main extends React.Component {
     //读取cookie中的userid
     const userid = Cookies.get('userId');
     // debugger
-    console.log(userid);
+    // console.log(userid);
 
     //如果没有，自动重定向到登录界面
     if (!userid) {

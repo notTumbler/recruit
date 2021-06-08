@@ -29,7 +29,7 @@ class Personal extends React.Component {
   }
   //修改信息
   resetInfo = () => {
-    console.log(this.props)
+    // console.log(this.props)
     const { type } = this.props.user
     let path = type === 'laoban' ? 'bossinfo' : 'staffinfo'
     this.props.history.push(`/${path}`)

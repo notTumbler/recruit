@@ -42,13 +42,13 @@ class  Recommend extends React.Component{
     this.props.getUserList(resetType);
   }
   render(){
-    const { post } = this.props.user
+    let { post } = this.props.user
     const { userList } = this.props
-    // userList.map(item=>console.log(item.post))
+    if(post==null) post = 'vue'
     let postArr = post.trim().split(/\s+/)
-    console.log(postArr)
     this.userList = userList.filter(item => {
-      let chen = item.post.toLowerCase().split(/\s+/)
+      if(item.post==null) item.post = ''
+      let chen = item['post'].toLowerCase().split(/\s+/)
       let  newArr = chen.concat(postArr)
       let newSet = [...new Set(newArr)]
       return newArr.length > newSet.length

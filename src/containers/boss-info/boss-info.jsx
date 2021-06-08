@@ -9,7 +9,7 @@ import { NavBar,InputItem,TextareaItem,Button,Toast } from 'antd-mobile'
 import hasOneIsEmpty from '../../utils/hasOneIsEmpty'
 
 
-class Boss extends React.Component{
+class BossInfo extends React.Component{
   state = {
     header:'',post:'', info:'',
     company:'',salary:'',city:''
@@ -50,7 +50,7 @@ class Boss extends React.Component{
     this.props.updateUser(this.state);
     const { type } = this.props.user;
     const path = type==='dashen'?'/staff':'/boss';
-    Toast.info('信息更新成功',1.5)
+    Toast.info('保存成功',1.5)
     setTimeout(()=>{
       this.props.history.push(`${path}`)
     },1500)
@@ -59,7 +59,8 @@ class Boss extends React.Component{
     let { post,info,company,salary,city,header } = this.props.user
     return (<div>
       <div className='navbar'>
-      <NavBar>个人信息</NavBar>
+      <NavBar
+      >个人信息</NavBar>
       </div>
       <HeaderSelect headerIcon={header} setHeader={this.setHeader}></HeaderSelect>
       <InputItem placeholder="请输入招聘职位" 
@@ -84,8 +85,7 @@ class Boss extends React.Component{
     </div>)
   }
 }
-
 export default connect(
   state => ({user:state.user}),
   {updateUser}
-)(Boss)
+)(BossInfo)

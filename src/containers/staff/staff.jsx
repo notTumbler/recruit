@@ -23,12 +23,12 @@ class Staff extends React.Component{
   //提交
   onSubmit = () => {
     const serachValue = this.manualFocusInst.state.value
-    this.searchContent = serachValue
-    console.log(this.props.userList)
+    // this.searchContent = serachValue
+    console.log(`~~~~~~~~~~~~`)
     let newArr = this.props.userList.filter((item) => {
-      return item.company.search(`${this.searchContent}`)!== -1|| item.post === this.searchContent
+      return item.company === serachValue|| item.post === serachValue
     })
-    console.log(newArr)
+    // console.log(newArr)
     this.setState({userList:newArr})
   }
   // 取消

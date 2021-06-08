@@ -10,4 +10,8 @@
   outline: none;
   border: none;
   color: wheat;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
 }

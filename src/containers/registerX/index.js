@@ -1,9 +1,9 @@
 import React from 'react'
 import './index.less'
-import Toast from '../../components/toast/toast'
+import MyToast from '../../components/toast/toast'
 import {
-  NavBar, List,
-} from 'antd-mobile'
+  NavBar, List,InputItem,Radio,WhiteSpace,Toast
+} from 'antd-mobile' 
 //rudux
 import { connect } from 'react-redux'
 
@@ -18,20 +18,23 @@ class Register extends React.Component {
   state = {
     username: '',
     password: '',
-    repassword: '',
     type: 'dashen' ,  //用户类型名称,
     ToastMsg:''
+  }
+  //从注册转至登录页面时，登录页面也会显示“用户已经存在”---在willUnmount中将msg清空即可
+  componentWillUnmount(){
+    this.props.user.msg = ''
   }
   //点击注册 获取表单里的信息
   register = () => {
     const { username, password, repassword, type } = this.state;
     // console.log(this.state);
     if (username.trim() === '' || password.trim() === '' || repassword.trim() === '' || type.trim() === '') {
-      this.setState({ToastMsg:'请将信息补全'})
-      return console.log('请将信息补全');
+      Toast.info('请将信息补全')
+      return
     } else if (password !== repassword) {
-      this.setState({ToastMsg:'两次输入的密码不一致'})
-      return console.log('两次输入的密码不一致');
+      Toast.info('两次输入的密码不一致')
+      return
     } else {
       this.props.register(this.state);
       // console.log(this.state);
@@ -45,13 +48,13 @@ class Register extends React.Component {
   }
   //已有账号 跳转至登录页面
   toLogin = () => {
+    localStorage.setItem('firstEntry',false)
     this.props.history.push('/login')
   }
-
-
   render() {
+  
     const { type } = this.state;
-    const { msg, redirectTo } = this.props.user;
+    const { msg,redirectTo } = this.props.user;
     if (redirectTo) {
       return <Redirect to={redirectTo} />
     }
@@ -96,9 +99,9 @@ class Register extends React.Component {
          <button className="btn-register effect"
            onClick={() => this.register()}
          >注册</button>
-         <button className="btn-account effect" onClick={() => this.toLogin()}>已有账号</button>
+         <button className="btn-account effect" onClick={() => this.toLogin()}>已有账号,去登录</button>
         </div>
-      {msg ? <Toast toastData={msg} showTime={1000} /> : null}
+      {msg ? <MyToast toastData={msg} showTime={1000} /> : null}
     </div>)
   }
 }

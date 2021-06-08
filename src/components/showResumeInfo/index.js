@@ -56,7 +56,7 @@ class ShowResumeInfo extends React.Component {
             </div>
           </Card.Body>
         </div>
-        <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
+        {/* <Card.Footer content="footer content" extra={<div>extra footer content</div>} /> */}
       </Card>
     </div>)
   }

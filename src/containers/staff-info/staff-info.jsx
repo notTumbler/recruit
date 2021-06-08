@@ -7,7 +7,7 @@ import { updateUser } from '../../redux/actions'
 import './staff-info.less'
 import { NavBar, InputItem, TextareaItem, Button, Toast } from 'antd-mobile'
 import hasOneIsEmpty from '../../utils/hasOneIsEmpty'
-class Staff extends React.Component {
+class StaffInfo extends React.Component {
   state = {
     header: '',
     post: '',
@@ -50,7 +50,7 @@ class Staff extends React.Component {
     this.props.updateUser(this.state);
     const { type } = this.props.user;
     const path = type === 'dashen' ? '/staff' : '/boss';
-    Toast.info('信息更新成功',1.5)
+    Toast.info('保存成功',1.5)
     setTimeout(()=> {
       this.props.history.push(`${path}`)
     },1500)
@@ -59,7 +59,8 @@ class Staff extends React.Component {
     let { post,info,salary,city,header } = this.props.user
 
     return (<div>
-      <NavBar className='navbar'>个人信息</NavBar>
+      <NavBar className='navbar'
+      >个人信息</NavBar>
       <HeaderSelect headerIcon={header} setHeader={this.setHeader}></HeaderSelect>
       <InputItem placeholder="请输入应聘职位" onChange={(val) => this.handleChange('post', val)}
       defaultValue={post}>应聘职位:</InputItem>
@@ -77,4 +78,4 @@ class Staff extends React.Component {
 export default connect(
   state => ({ user: state.user }),
   { updateUser }
-)(Staff)
+)(StaffInfo)

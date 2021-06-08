@@ -131,13 +131,14 @@ class Chat extends React.Component {
     };
     const targetId = this.props.match.params.userid;
     const chatId = [meId, targetId].sort().join('_');
-    // console.log(`charId~~${chatId}`)
+    
     //对chatMsgs进行过滤（chat_id)
     const msgs = chatMsgs.filter(msg => msg.chat_id === chatId);
     //为了更好的性能，在循环外先得到头像,用户可能未完成信息完善
     const targetHeader = users[targetId].header;
+    const UserHeader = users[meId].header
     const targetIcon = targetHeader ? require(`../../assets/img/${targetHeader}.png`) : null;
-
+    const UserHeaderIcon = UserHeader ? require(`../../assets/img/${UserHeader}.png`) : null
     return (<>
       <div id="chat-page">
         <NavBar icon={<Icon type='left' />}
@@ -192,20 +193,29 @@ class Chat extends React.Component {
             {
               msgs.map(msg => {
                 if (targetId === msg.from) { //对方发给我的
-                  return (
-                    <Item key={msg._id}
-                      thumb={targetIcon}>
-                      {msg.content}
-                    </Item>
+                  return (<div id="qipao-left" key={msg._id}>
+                      <Item className='item'
+                       thumb={targetIcon}>
+                      </Item>
+                      <div className='triangle'></div>
+                      <div className='msg'>
+                        {msg.content}</div>
+                    </div>
                   )
                 } else {
                   //我发给别人的
-                  return (
-                    <Item key={msg._id}
-                      className='chat-me'
-                      extra='我'>
-                      {msg.content}
-                    </Item>
+                  return (<div id="qipao-right" key={msg._id}>
+                    
+                      <div className='chen'>
+                      <div className='msg'>{msg.content}</div>
+                      <div className='triangle-right'></div>
+                      <Item  
+                       className='item'
+                       thumb={UserHeaderIcon}
+                      >
+                      </Item>
+                      </div>
+                  </div>
                   )
                 }
               })

@@ -31,7 +31,18 @@
   border: solid 1px skyblue;
   border-radius: 50% 10% 50% 10%;
 }
+.user-list-404 {
+  height: 71vh;
+  margin-top: 92px;
+}
+.user-list-404 marquee {
+  background-color: #e3f1ee;
+  padding: 10px;
+  color: #108ee9;
+  font-size: 22px;
+}
 .user-list-404 img {
+  display: inline-block;
   width: 100%;
   height: 100%;
 }
